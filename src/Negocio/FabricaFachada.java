@@ -5,22 +5,15 @@
  */
 package Negocio;
 
-import Dominio.Maestro;
-import java.util.ArrayList;
-
 /**
  *
  * @author javie
  */
-public class CtrlMaestro {
-
-  public ArrayList<Maestro> getMaestros(){
-      
-      
-      
-      
-      return null;
-      
-  }
+public class FabricaFachada {
+    
+    public static FachadaNegocio getFachadaNegocio(){
+        return new FachadaNegocio();
+    }
+    
     
 }

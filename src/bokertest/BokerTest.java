@@ -5,6 +5,12 @@
  */
 package bokertest;
 
+import Dominio.Curso;
+import Negocio.CtrlCalificacion;
+import Negocio.FabricaFachada;
+import Negocio.FachadaNegocio;
+import java.util.ArrayList;
+
 /**
  *
  * @author javie
@@ -15,8 +21,25 @@ public class BokerTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CtrlCalificacion ctrl = new CtrlCalificacion();
-        ctrl.getCalificaciones();
+        //obtener fachada negocio
+        FachadaNegocio fachadaNegocio = FabricaFachada.getFachadaNegocio();
+
+        //obtener lista de cursos
+        ArrayList<Curso> cursos = fachadaNegocio.getCursos();
+
+        for (int i = 0; i < cursos.size(); i++) {
+            System.out.println("Curso");
+            System.out.println("id " + cursos.get(i).getId());
+            System.out.println("fullname " + cursos.get(i).getFullName());
+
+            for (int j = 0; j < cursos.get(i).getMaestros().size(); j++) {
+                System.out.println("    Maestros");
+                System.out.println("    id " + cursos.get(i).getMaestros().get(j).getId());
+                System.out.println("    fullname " + cursos.get(i).getMaestros().get(j).getNombre());
+            }
+
+        }
+
     }
-    
+
 }

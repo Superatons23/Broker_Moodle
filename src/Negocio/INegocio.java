@@ -5,6 +5,7 @@
  */
 package Negocio;
 
+import Dominio.Curso;
 import Dominio.Maestro;
 import java.util.ArrayList;
 
@@ -12,15 +13,11 @@ import java.util.ArrayList;
  *
  * @author javie
  */
-public class CtrlMaestro {
-
-  public ArrayList<Maestro> getMaestros(){
-      
-      
-      
-      
-      return null;
-      
-  }
+public interface INegocio {
+    
+    
+    public ArrayList<Curso> getCursos();
+    public ArrayList<Maestro> getMaestros();
+    
     
 }
