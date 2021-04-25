@@ -13,27 +13,27 @@ import java.util.ArrayList;
  */
 public class Maestro {
     
-    private ArrayList<Alumno> alumnos;
+   private int id;
     private String nombre;
 
-    public Maestro(ArrayList<Alumno> alumnos) {
-        this.alumnos = alumnos;
-    }
-
-    public Maestro(ArrayList<Alumno> alumnos, String nombre) {
-        this.alumnos = alumnos;
+    public Maestro(int id, String nombre) {
+        this.id = id;
         this.nombre = nombre;
     }
-    
-    
 
-    public ArrayList<Alumno> getAlumnos() {
-        return alumnos;
+    public int getId() {
+        return id;
     }
 
-    public void setAlumnos(ArrayList<Alumno> alumnos) {
-        this.alumnos = alumnos;
+    public void setId(int id) {
+        this.id = id;
     }
+
+ 
+
+  
+    
+
 
     public String getNombre() {
         return nombre;

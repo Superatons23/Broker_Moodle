@@ -5,7 +5,9 @@
  */
 package Negocio;
 
-import Datos.ResourceCalificacion;
+import Dominio.Alumno;
+import Dominio.Curso;
+import Dominio.Maestro;
 import Dominio.Calificacion;
 import java.util.ArrayList;
 
@@ -13,11 +15,13 @@ import java.util.ArrayList;
  *
  * @author javie
  */
-public class CtrlCalificacion {
+public interface INegocio {
     
     
-    public ArrayList<Calificacion> getCalificaciones(){
-        ResourceCalificacion resource = new ResourceCalificacion();
-        return resource.getCalificaciones();
-    }
+    public ArrayList<Curso> getCursos();
+    public ArrayList<Maestro> getMaestros();
+    public ArrayList<Alumno> getAlumnos();
+    public ArrayList<Calificacion> getCalificaciones();
+    
+    
 }
