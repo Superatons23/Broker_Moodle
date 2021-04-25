@@ -5,6 +5,8 @@
  */
 package bokertest;
 
+import Negocio.CtrlCalificacion;
+
 /**
  *
  * @author javie

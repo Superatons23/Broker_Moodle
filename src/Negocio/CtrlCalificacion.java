@@ -5,7 +5,7 @@
  */
 package Negocio;
 
-import bokertest.ResourceCalificacion;
+import Datos.ResourceCalificacion;
 
 /**
  *
