@@ -5,10 +5,9 @@
  */
 package Datos;
 
+import Dominio.Alumno;
 import Dominio.Curso;
 import Dominio.Maestro;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -57,6 +56,7 @@ public class ResourceCurso {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject explrObjectCourses = jsonArray.getJSONObject(i);
 
+                
                 //list Maestros
                 ArrayList<Maestro> maestros = new ArrayList<>();
 
@@ -68,6 +68,10 @@ public class ResourceCurso {
                     maestros.add(new Maestro(explrObjectContacts.getInt("id"), explrObjectContacts.getString("fullname")));
 
                 }
+                ResourceAlumnos alumnos=new ResourceAlumnos();
+                
+                
+                
 
                 //agregar un curso ala lista
                 cursos.add(new Curso(maestros, explrObjectCourses.getString("fullname"), explrObjectCourses.getString("shortname"),explrObjectCourses.getInt("id")));
@@ -80,5 +84,15 @@ public class ResourceCurso {
             Logger.getLogger(ResourceCalificacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cursos;
+    }
+    public Curso getCursoById(Integer id){
+        ArrayList<Curso> cursos=getCursos();
+        
+        for(Curso c:cursos){
+            if(c.getId()==id){
+                return c;
+            }
+        }
+        return null;
     }
 }

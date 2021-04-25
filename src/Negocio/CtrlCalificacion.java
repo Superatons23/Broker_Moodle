@@ -6,6 +6,8 @@
 package Negocio;
 
 import Datos.ResourceCalificacion;
+import Dominio.Calificacion;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,8 +16,8 @@ import Datos.ResourceCalificacion;
 public class CtrlCalificacion {
     
     
-    public void getCalificaciones(){
+    public ArrayList<Calificacion> getCalificaciones(){
         ResourceCalificacion resource = new ResourceCalificacion();
-        resource.getCalificaciones();
+        return resource.getCalificaciones();
     }
 }

@@ -5,8 +5,10 @@
  */
 package Negocio;
 
+import Dominio.Alumno;
 import Dominio.Curso;
 import Dominio.Maestro;
+import Dominio.Calificacion;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +20,8 @@ public interface INegocio {
     
     public ArrayList<Curso> getCursos();
     public ArrayList<Maestro> getMaestros();
+    public ArrayList<Alumno> getAlumnos();
+    public ArrayList<Calificacion> getCalificaciones();
     
     
 }
