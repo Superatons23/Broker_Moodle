@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bokertest;
+package Negocio;
 
 /**
  *
  * @author javie
  */
-public class CtrlCalificacion {
-    
-    
-    public void getCalificaciones(){
-        ResourceCalificacion resource = new ResourceCalificacion();
-        resource.getCalificaciones();
+public class CtrlMaestro {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
+    
 }

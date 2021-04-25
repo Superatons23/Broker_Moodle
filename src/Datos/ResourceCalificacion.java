@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bokertest;
+package Datos;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,6 +45,8 @@ public class ResourceCalificacion {
             }
             // Regresar resultado, pero como cadena, no como StringBuilder
              resultado.toString();
+             
+             
              
              System.out.println(resultado.toString());
         } catch (MalformedURLException ex) {
