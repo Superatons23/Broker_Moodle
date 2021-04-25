@@ -5,6 +5,9 @@
  */
 package bokertest;
 
+import Datos.ResourceCalificacion;
+import Dominio.Alumno;
+import Dominio.Calificacion;
 import Dominio.Curso;
 import Negocio.CtrlCalificacion;
 import Negocio.FabricaFachada;
@@ -27,6 +30,15 @@ public class BokerTest {
         //obtener lista de cursos
         ArrayList<Curso> cursos = fachadaNegocio.getCursos();
 
+        ArrayList<Alumno> alumnos = fachadaNegocio.getAlumnos();
+        for (Alumno a:alumnos) {
+            System.out.println(a.toString());
+        }
+        
+        ArrayList<Calificacion> cals=fachadaNegocio.getCalificaciones();
+        for (Calificacion c:cals) {
+            System.out.println(c.toString());
+        }
         for (int i = 0; i < cursos.size(); i++) {
             System.out.println("Curso");
             System.out.println("id " + cursos.get(i).getId());

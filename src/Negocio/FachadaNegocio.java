@@ -5,6 +5,8 @@
  */
 package Negocio;
 
+import Dominio.Alumno;
+import Dominio.Calificacion;
 import Dominio.Curso;
 import Dominio.Maestro;
 import java.util.ArrayList;
@@ -19,6 +21,18 @@ public class FachadaNegocio implements INegocio {
     public ArrayList<Curso> getCursos() {
         CtrlCurso curso = new CtrlCurso();
        return curso.getCursos();
+    }
+    
+    @Override
+    public ArrayList<Calificacion> getCalificaciones() {
+        CtrlCalificacion cal = new CtrlCalificacion();
+       return cal.getCalificaciones();
+    }
+    
+    @Override
+    public ArrayList<Alumno> getAlumnos() {
+        CtrlAlumno alumno= new CtrlAlumno();
+       return alumno.getAlumnos();
     }
 
     @Override

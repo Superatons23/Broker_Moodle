@@ -32,6 +32,12 @@ public class Curso {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Curso{" + "id=" + id + '}';
+    }
+
+
     public void setId(int id) {
         this.id = id;
     }
