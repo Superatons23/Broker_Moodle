@@ -9,11 +9,12 @@ import Dominio.Alumno;
 import Dominio.Calificacion;
 import Dominio.Curso;
 import Dominio.Maestro;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  *
- * @author javie
+ * @author ruben
  */
 public interface IDatos {
     
@@ -21,5 +22,7 @@ public interface IDatos {
     public ArrayList<Alumno> getAlumnos();
     public Curso getCursoById(Integer id);
     public ArrayList<Maestro> getMaestros();
-    public ArrayList<Calificacion> getCalificaciones();
+    public ArrayList<Calificacion> getCalificaciones(ArrayList<Curso> cursos);
+    public void enviarCalificaciones(ArrayList<Calificacion> calificaciones) throws IOException;
+
 }

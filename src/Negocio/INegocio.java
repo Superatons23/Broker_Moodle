@@ -9,6 +9,7 @@ import Dominio.Alumno;
 import Dominio.Curso;
 import Dominio.Maestro;
 import Dominio.Calificacion;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,9 @@ public interface INegocio {
     public ArrayList<Curso> getCursos();
     public ArrayList<Maestro> getMaestros();
     public ArrayList<Alumno> getAlumnos();
-    public ArrayList<Calificacion> getCalificaciones();
+    public ArrayList<Calificacion> getCalificaciones( ArrayList<Curso> cursos);
+     public void enviCalificacions(ArrayList<Calificacion> calificaciones) throws IOException; 
+        
     
     
 }

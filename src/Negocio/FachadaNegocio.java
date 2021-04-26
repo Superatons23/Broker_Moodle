@@ -9,6 +9,7 @@ import Dominio.Alumno;
 import Dominio.Calificacion;
 import Dominio.Curso;
 import Dominio.Maestro;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -24,9 +25,9 @@ public class FachadaNegocio implements INegocio {
     }
     
     @Override
-    public ArrayList<Calificacion> getCalificaciones() {
+    public ArrayList<Calificacion> getCalificaciones( ArrayList<Curso> cursos) {
         CtrlCalificacion cal = new CtrlCalificacion();
-       return cal.getCalificaciones();
+       return cal.getCalificaciones(cursos);
     }
     
     @Override
@@ -41,5 +42,9 @@ public class FachadaNegocio implements INegocio {
     }
     
    
-    
+    @Override
+    public void enviCalificacions(ArrayList<Calificacion> calificaciones) throws IOException {
+        CtrlCalificacion cal = new CtrlCalificacion();
+        cal.enviarCalificaciones(calificaciones);
+    }
 }

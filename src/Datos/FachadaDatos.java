@@ -9,6 +9,7 @@ import Dominio.Alumno;
 import Dominio.Calificacion;
 import Dominio.Curso;
 import Dominio.Maestro;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -24,9 +25,9 @@ public class FachadaDatos implements IDatos {
     }
     
     @Override
-    public ArrayList<Calificacion> getCalificaciones() {
+    public ArrayList<Calificacion> getCalificaciones(ArrayList<Curso> cursos) {
        ResourceCalificacion cal = new ResourceCalificacion();
-       return cal.getCalificaciones();
+       return cal.getCalificaciones(cursos);
     }
     
     @Override
@@ -44,6 +45,12 @@ public class FachadaDatos implements IDatos {
     public ArrayList<Alumno> getAlumnos() {
        ResourceAlumnos alumno = new ResourceAlumnos();
        return alumno.getAlumnos();
+    }
+
+    @Override
+    public void enviarCalificaciones(ArrayList<Calificacion> calificaciones)throws IOException {
+        ResourceCalificacion cal = new ResourceCalificacion();
+        cal.enviarCalificaciones(calificaciones);
     }
 
     
