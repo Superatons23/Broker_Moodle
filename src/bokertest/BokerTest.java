@@ -12,45 +12,45 @@ import Dominio.Curso;
 import Negocio.CtrlCalificacion;
 import Negocio.FabricaFachada;
 import Negocio.FachadaNegocio;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONArray;
 
 /**
  *
- * @author javie
+ * @author desconocido
  */
 public class BokerTest {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //obtener fachada negocio
         FachadaNegocio fachadaNegocio = FabricaFachada.getFachadaNegocio();
 
-        //obtener lista de cursos
-        ArrayList<Curso> cursos = fachadaNegocio.getCursos();
-
-        ArrayList<Alumno> alumnos = fachadaNegocio.getAlumnos();
-        for (Alumno a:alumnos) {
-            System.out.println(a.toString());
-        }
-        
-        ArrayList<Calificacion> cals=fachadaNegocio.getCalificaciones();
-        for (Calificacion c:cals) {
-            System.out.println(c.toString());
-        }
-        for (int i = 0; i < cursos.size(); i++) {
-            System.out.println("Curso");
-            System.out.println("id " + cursos.get(i).getId());
-            System.out.println("fullname " + cursos.get(i).getFullName());
-
-            for (int j = 0; j < cursos.get(i).getMaestros().size(); j++) {
-                System.out.println("    Maestros");
-                System.out.println("    id " + cursos.get(i).getMaestros().get(j).getId());
-                System.out.println("    fullname " + cursos.get(i).getMaestros().get(j).getNombre());
+        Timer timer = new Timer();
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    ArrayList<Calificacion> cals = fachadaNegocio.getCalificaciones(fachadaNegocio.getCursos());
+                    
+                    fachadaNegocio.enviCalificacions(cals);
+                } catch (IOException ex) {
+                    Logger.getLogger(BokerTest.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+                
             }
-
-        }
+        };
+        // scheduling the task at fixed rate delay
+        timer.scheduleAtFixedRate(tt, 2000, 10000);
 
     }
 

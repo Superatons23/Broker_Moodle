@@ -9,6 +9,7 @@ import Dominio.Calificacion;
 import Dominio.Curso;
 import Dominio.Maestro;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -27,11 +28,9 @@ import org.json.JSONObject;
 public class ResourceCalificacion {
     
     
-    public ArrayList<Calificacion> getCalificaciones(){
+    public ArrayList<Calificacion> getCalificaciones(ArrayList<Curso> cursos){
         ArrayList<Calificacion> cals=new ArrayList<>();
-        
-         ResourceCurso curso = new ResourceCurso();
-        for(Curso c:curso.getCursos()){
+        for(Curso c:cursos){
          
         try {
             // Esto es lo que vamos a devolver
@@ -70,6 +69,8 @@ public class ResourceCalificacion {
                 //for para obtener maestros del curso
                 for (int j = 0; j < jsonArrayContacts.length(); j++) {
                     JSONObject explrObjectContacts = jsonArrayContacts.getJSONObject(j);
+                    System.out.println("...........");
+                    System.out.println(explrObjectContacts.getString("gradeformatted"));
                     cal.setCalificacion(explrObjectContacts.getString("gradeformatted"));
 
                 }
@@ -89,5 +90,44 @@ public class ResourceCalificacion {
     }
        return cals;
         }
+    public void enviarCalificaciones(ArrayList<Calificacion> calificaciones) throws IOException{
+           String url = "http://localhost:8080/APIREST/webresources/entity.calificacion";
+       URL obj = new URL(url);
+  HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+ 
+        // Setting basic post request
+  con.setRequestMethod("POST");
+  con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+  con.setRequestProperty("Content-Type","application/json");
+ //esta cadena se envia
+  JSONArray jsArray = new JSONArray(calificaciones);
+
+  String postJsonData = jsArray.toString();
+
+  // Send post request
+  con.setDoOutput(true);
+  DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+  wr.writeBytes(postJsonData);
+  wr.flush();
+  wr.close();
+ 
+  int responseCode = con.getResponseCode();
+  System.out.println("nSending 'POST' request to URL : " + url);
+  System.out.println("Post Data : " + postJsonData);
+  System.out.println("Response Code : " + responseCode);
+ 
+  BufferedReader in = new BufferedReader(
+  new InputStreamReader(con.getInputStream()));
+  String output;
+  StringBuffer response = new StringBuffer();
+ 
+  while ((output = in.readLine()) != null) {
+   response.append(output);
+  }
+  in.close();
+ 
+  //printing result from response
+  System.out.println(response.toString());
+    }
     
 }

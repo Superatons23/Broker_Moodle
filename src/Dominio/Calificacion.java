@@ -12,12 +12,14 @@ package Dominio;
 public class Calificacion {
     int idCurso;
     int idAlumno;
+    int idCalificacion;
     String calificacion;
 
     public Calificacion(int idCurso, int idAlumno, String calificacion) {
         this.idCurso = idCurso;
         this.idAlumno = idAlumno;
         this.calificacion = calificacion;
+        this.idCalificacion=0;
     }
 
     public int getIdCurso() {
@@ -25,11 +27,12 @@ public class Calificacion {
     }
 
     public Calificacion() {
+        this.idCalificacion=0;
     }
 
     @Override
     public String toString() {
-        return "Calificacion{" + "idCurso=" + idCurso + ", idAlumno=" + idAlumno + ", calificacion=" + calificacion + '}';
+        return "{\"calificacion\":"+this.calificacion+","+"\"idAlumno\":"+this.getIdAlumno()+","+"\"idCalificacion\":"+this.idCalificacion+","+"\"idCurso\":"+this.idCurso+"}";
     }
 
     public void setIdCurso(int idCurso) {
@@ -50,5 +53,13 @@ public class Calificacion {
 
     public void setCalificacion(String calificacion) {
         this.calificacion = calificacion;
+    }
+
+    public int getIdCalificacion() {
+        return idCalificacion;
+    }
+
+    public void setIdCalificacion(int idCalificacion) {
+        this.idCalificacion = idCalificacion;
     }
 }
