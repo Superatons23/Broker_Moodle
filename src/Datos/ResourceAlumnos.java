@@ -33,9 +33,9 @@ public class ResourceAlumnos {
         ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
         //response
 
-        moodle.getAlumnos();
+        
         //json array, no se ocupa objetojson por que ya es un array no se ocupa convertir a array
-        JSONArray jsonArray = new JSONArray(moodle.toString());
+        JSONArray jsonArray = new JSONArray(moodle.getAlumnos());
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject explrObjectCourses = jsonArray.getJSONObject(i);
             Alumno a = new Alumno();

@@ -36,13 +36,9 @@ public class ResourceCalificacion {
         ArrayList<Calificacion> cals=new ArrayList<>();
         for(Curso c:cursos){
          
-               moodle.getAlumnos();
-
-            // Regresar resultado, pero como cadena, no como StringBuilder
-             moodle.toString();
              
              //convert cadena to  jsonObject
-            JSONObject jsnobject = new JSONObject(moodle.toString());
+            JSONObject jsnobject = new JSONObject(moodle.getCalificacionesPorCursoId(c.getId()));
 
             //convert jsonObject to  JSONArray
             JSONArray jsonArray = jsnobject.getJSONArray("usergrades");

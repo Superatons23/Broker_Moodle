@@ -31,10 +31,9 @@ public class ResourceCurso {
     public ArrayList<Curso> getCursos() {
         ArrayList<Curso> cursos = new ArrayList<Curso>();
 
-        moodle.getCursos();
 
             //convert cadena to  jsonObject
-            JSONObject jsnobject = new JSONObject(moodle.toString());
+            JSONObject jsnobject = new JSONObject(moodle.getCursos());
 
             //convert jsonObject to  JSONArray
             JSONArray jsonArray = jsnobject.getJSONArray("courses");
