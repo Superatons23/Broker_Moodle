@@ -39,6 +39,7 @@ public class BokerTest {
             @Override
             public void run() {
                 try {
+                    
                     ArrayList<Calificacion> cals = fachadaNegocio.getCalificaciones(fachadaNegocio.getCursos());
                     
                     fachadaNegocio.enviCalificacions(cals);
