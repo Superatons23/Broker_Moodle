@@ -6,8 +6,8 @@
 package Negocio;
 
 import Datos.ResourceCalificacion;
-import Dominio.Calificacion;
-import Dominio.Curso;
+import dominiobroker.Calificacion;
+import dominiobroker.Curso;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;

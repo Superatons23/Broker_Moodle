@@ -6,7 +6,7 @@
 package Datos;
 
 
-import Dominio.Maestro;
+import dominiobroker.Maestro;
 import java.util.ArrayList;
 
 /**

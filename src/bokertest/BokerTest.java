@@ -6,9 +6,9 @@
 package bokertest;
 
 import Datos.ResourceCalificacion;
-import Dominio.Alumno;
-import Dominio.Calificacion;
-import Dominio.Curso;
+import dominiobroker.Alumno;
+import dominiobroker.Calificacion;
+import dominiobroker.Curso;
 import Negocio.CtrlCalificacion;
 import Negocio.FabricaFachada;
 import Negocio.FachadaNegocio;
