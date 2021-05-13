@@ -20,41 +20,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import servicios.MoodleConsumer;
 
 /**
  *
- * @author javie
+ * @author 123
  */
 public class ResourceCalificacion {
     
-    
+     MoodleConsumer moodle = new MoodleConsumer();
+
     public ArrayList<Calificacion> getCalificaciones(ArrayList<Curso> cursos){
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("Obteniendo calificaciones de la plataforma Moodle...");
         ArrayList<Calificacion> cals=new ArrayList<>();
         for(Curso c:cursos){
          
-        try {
-            // Esto es lo que vamos a devolver
-            StringBuilder resultado = new StringBuilder();
-            // Crear un objeto de tipo URL
-            URL url = new URL("https://cuervos.moodlecloud.com/webservice/rest/server.php?wstoken=7946744ecb0882f94fd3df4cae1c76bb&moodlewsrestformat=json&wsfunction=gradereport_user_get_grade_items&courseid="+c.getId());
-            
-            // Abrir la conexión e indicar que será de tipo GET
-            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-            conexion.setRequestMethod("GET");
-            try ( // Búferes para leer
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(conexion.getInputStream()))) {
-                String linea;
-                // Mientras el BufferedReader se pueda leer, agregar contenido a resultado
-                while ((linea = rd.readLine()) != null) {
-                    resultado.append(linea);
-                }
-                // Cerrar el BufferedReader
-            }
-            // Regresar resultado, pero como cadena, no como StringBuilder
-             resultado.toString();
              
              //convert cadena to  jsonObject
-            JSONObject jsnobject = new JSONObject(resultado.toString());
+            JSONObject jsnobject = new JSONObject(moodle.getCalificacionesPorCursoId(c.getId()));
 
             //convert jsonObject to  JSONArray
             JSONArray jsonArray = jsnobject.getJSONArray("usergrades");
@@ -69,8 +53,7 @@ public class ResourceCalificacion {
                 //for para obtener maestros del curso
                 for (int j = 0; j < jsonArrayContacts.length(); j++) {
                     JSONObject explrObjectContacts = jsonArrayContacts.getJSONObject(j);
-                    System.out.println("...........");
-                    System.out.println(explrObjectContacts.getString("gradeformatted"));
+                
                     cal.setCalificacion(explrObjectContacts.getString("gradeformatted"));
 
                 }
@@ -82,15 +65,14 @@ public class ResourceCalificacion {
 
                 
             }
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(ResourceCalificacion.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ResourceCalificacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+       
     }
+        System.out.println("Calificaciones obtenidas exitosamente desde la plataforma Moodle...");
        return cals;
         }
     public void enviarCalificaciones(ArrayList<Calificacion> calificaciones) throws IOException{
+        System.out.println("Enviando calificaciones a sistema Control Escolar...");
            String url = "http://localhost:8080/APIREST/webresources/entity.calificacion";
        URL obj = new URL(url);
   HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -112,9 +94,7 @@ public class ResourceCalificacion {
   wr.close();
  
   int responseCode = con.getResponseCode();
-  System.out.println("nSending 'POST' request to URL : " + url);
-  System.out.println("Post Data : " + postJsonData);
-  System.out.println("Response Code : " + responseCode);
+ 
  
   BufferedReader in = new BufferedReader(
   new InputStreamReader(con.getInputStream()));
@@ -126,8 +106,8 @@ public class ResourceCalificacion {
   }
   in.close();
  
-  //printing result from response
-  System.out.println(response.toString());
+ 
+        System.out.println("Calificaciones enviadas exitosamente a control escolar...");
     }
     
 }
