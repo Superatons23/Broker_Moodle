@@ -38,15 +38,13 @@ public class BokerTest {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
+                ArrayList<Calificacion> cals = fachadaNegocio.getCalificaciones(fachadaNegocio.getCursos());
+              
                 try {
-                    
-                    ArrayList<Calificacion> cals = fachadaNegocio.getCalificaciones(fachadaNegocio.getCursos());
-                    
                     fachadaNegocio.enviCalificacions(cals);
                 } catch (IOException ex) {
                     Logger.getLogger(BokerTest.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               
                 
             }
         };
