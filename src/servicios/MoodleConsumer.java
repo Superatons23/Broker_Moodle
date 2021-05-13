@@ -56,6 +56,7 @@ public class MoodleConsumer {
         String response = webTarget.request(MediaType.APPLICATION_JSON)
             .get(String.class);
             //System.out.println(response);
+            
             return response;
     }
     
