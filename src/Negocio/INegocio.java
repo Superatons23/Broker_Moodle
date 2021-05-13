@@ -5,10 +5,10 @@
  */
 package Negocio;
 
-import Dominio.Alumno;
-import Dominio.Curso;
-import Dominio.Maestro;
-import Dominio.Calificacion;
+import dominiobroker.Alumno;
+import dominiobroker.Curso;
+import dominiobroker.Maestro;
+import dominiobroker.Calificacion;
 import java.io.IOException;
 import java.util.ArrayList;
 

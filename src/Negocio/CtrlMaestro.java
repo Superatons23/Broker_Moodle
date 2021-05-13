@@ -5,7 +5,7 @@
  */
 package Negocio;
 
-import Dominio.Maestro;
+import dominiobroker.Maestro;
 import java.util.ArrayList;
 
 /**

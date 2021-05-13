@@ -5,9 +5,9 @@
  */
 package Datos;
 
-import Dominio.Alumno;
-import Dominio.Curso;
-import Dominio.Maestro;
+import dominiobroker.Alumno;
+import dominiobroker.Curso;
+import dominiobroker.Maestro;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

@@ -7,7 +7,7 @@ package Negocio;
 
 import Datos.FabricaDatos;
 import Datos.FachadaDatos;
-import Dominio.Curso;
+import dominiobroker.Curso;
 import java.util.ArrayList;
 
 /**
